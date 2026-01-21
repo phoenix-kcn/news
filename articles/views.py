@@ -1,23 +1,26 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 from .models import Article
 
 
 class ArticleListView(ListView):
     model = Article
-    template_name = 'article_list.html'
+    template_name = 'articles/article_list.html'
 
 class ArticleDetailView(DetailView):
     model = Article
-    template_name = 'article_detail.html'
-
+    template_name = 'articles/article_detail.html'
 class ArticleUpdateView(UpdateView):
     model = Article
-    fields = ['title', 'content', 'author']
-    template_name = 'article_form.html'
-    success_url = '/articles/'
+    fields = [
+        'title',
+        'body',
+    ]
+    template_name = 'articles/article_edit.html'
+    success_url = reverse_lazy('article_list')
 
 class ArticleDeleteView(DeleteView):
     model = Article
-    template_name = 'article_confirm_delete.html'
-    success_url = '/articles/'
+    template_name = 'articles/article_delete.html'
+    success_url = reverse_lazy('article_list')
