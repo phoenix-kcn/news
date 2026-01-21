@@ -130,4 +130,7 @@ LOGOUT_REDIRECT_URL = 'home'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" # new 
 CRISPY_TEMPLATE_PACK = "bootstrap5" # new
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # new
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # new
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
