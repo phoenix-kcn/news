@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Local Apps
     'accounts',
     'pages',
+    'articles',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
